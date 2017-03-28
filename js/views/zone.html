@@ -1,0 +1,24 @@
+<div class="oj-web-applayout-page">
+<div class="oj-web-applayout-max-width oj-web-applayout-content">
+  <div class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center">
+	<div class="oj-flex-item">
+		<h2>Anki Realtime Dashboard</h2>
+		<div><img src="images/anki.jpg"/></div><br/>
+		<div>
+		<label for="basicSelect" class="oj-label-inline">Select Demo Zone</label>
+		<select id="basicSelect" data-bind="ojComponent: {component: 'ojSelect',
+                                                    value: zone,
+                                                    options: zoneList,
+                                                    rootAttributes: {style:'max-width:20em'}}">
+		</select>
+		<button id="login" class="oj-button-primary"
+                  data-bind="ojComponent: {
+                      component:'ojButton', label: 'Start',
+                      icons: {end: 'oj-fwk-icon-caret-end oj-fwk-icon'},
+                      disabled: false, chroming: 'full'
+                  }, click: startButtonClick">Start</button>
+		</div>
+	</div>
+  </div>
+</div>
+</div>

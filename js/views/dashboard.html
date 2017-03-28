@@ -1,0 +1,219 @@
+      <!--
+         ** Oracle JET V2.3.0 web application header pattern.
+         ** Please see the demos under Cookbook/Patterns/App Shell: Web
+         ** and the CSS documentation under Support/API Docs/Non-Component Styling
+         ** on the JET website for more information on how to use this pattern.
+      -->
+<div class="oj-web-applayout-page">
+      <header id="header" role="banner" class="oj-web-applayout-header">
+        <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+          <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
+            <span role="img" class="oj-sm-only-hide oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></span>
+            <h1 class="oj-web-applayout-header-title" title="Application Name" data-bind="text: appName"></h1>&nbsp;
+            <span title="Connection status" role="img" class="oj-fwk-icon-load oj-fwk-icon" data-bind="visible: connectionStatus"></span>
+          </div>
+          <div class="oj-flex-bar-end">
+            <!-- Responsive Toolbar -->
+            <div data-bind="ojComponent: {component:'ojToolbar'}">
+              <button id="userMenu"
+                data-bind="ojComponent: {component: 'ojButton', label: userLogin,
+                display: smScreen() ? 'icons' : 'all',
+                icons: smScreen() ? {start: 'oj-component-icon oj-button-menu-dropdown-icon', end: null} : {end: 'oj-component-icon oj-button-menu-dropdown-icon'},
+                chroming: 'half', menu: '#menu1'}">
+              </button>
+              <ul id='menu1' data-bind="ojComponent: {component: 'ojMenu', select: menuItemSelect}" style="display:none">
+                <li id="iot"><a href="#">IoT Cloud Console</a></li>
+		<li id="bi"><a href="#">BI Cloud Console</a></li>
+		<li id="pcs"><a href="#">Process Cloud Workspace</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div role="main" id="main" class="oj-web-applayout-max-width oj-web-applayout-content">
+	<h3 title="Race information" style="font-weight: bold" data-bind="text: raceId"></h3>
+	<div id="gauges" class="oj-flex oj-sm-justify-content-center">
+		<div class="speed-gauge oj-flex-item">
+		  <img src="images/skull_comp.jpg"/>
+		  <div id="skull-speed-gauge"
+		       data-bind="ojComponent: {
+			 component: 'ojDialGauge',
+			 value: skullSpeed,
+			 readOnly: true,
+			 animationOnDisplay: 'auto',
+			 animationOnDataChange : 'auto',
+			 indicator: 'needleLight',
+			 background: 'circleLight',
+			 max: 10000,
+			 metricLabel: {rendered: 'off',
+			 style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+			}"
+			style="width:240px;height:240px">
+		    </div>
+		</div>
+		<div class="speed-gauge oj-flex-item">
+		    <img src="images/groundshock_comp.jpg"/>
+		    <div id="groundshock-speed-gauge"
+		       data-bind="ojComponent: {
+			 component: 'ojDialGauge',
+			 value: groundshockSpeed,
+			 readOnly: true,
+			 animationOnDisplay: 'auto',
+			 animationOnDataChange : 'auto',
+			 indicator: 'needleLight',
+			 background: 'circleLight',
+			 max: 10000,
+			 metricLabel: {rendered: 'off',
+			 style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+			}"
+			style="width:240px;height:240px">
+		    </div>
+		</div>
+		<div class="speed-gauge oj-flex-item">
+		    <img src="images/guardian_comp.jpg"/>
+		    <div id="guardian-speed-gauge"
+		       data-bind="ojComponent: {
+			 component: 'ojDialGauge',
+			 value: guardianSpeed,
+			 readOnly: true,
+			 animationOnDisplay: 'auto',
+			 animationOnDataChange : 'auto',
+			 indicator: 'needleLight',
+			 background: 'circleLight',
+			 max: 10000,
+			 metricLabel: {rendered: 'off',
+			 style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+			}"
+			style="width:240px;height:240px">
+		    </div>
+		</div>
+		<div class="speed-gauge oj-flex-item">
+		    <img src="images/thermo_comp.jpg"/>
+		    <div id="thermo-speed-gauge"
+		       data-bind="ojComponent: {
+			 component: 'ojDialGauge',
+			 value: thermoSpeed,
+			 readOnly: true,
+			 animationOnDisplay: 'auto',
+			 animationOnDataChange : 'auto',
+			 indicator: 'needleLight',
+			 background: 'circleLight',
+			 max: 10000,
+			 metricLabel: {rendered: 'off',
+			 style: 'font-size: 18px; font-weight: bold; font-family: Georgia, Times New Roman, serif;'}
+			}"
+			style="width:240px;height:240px">
+		    </div>
+		</div>
+		<div class="speed-gauge oj-flex-item">
+		      <img src="images/parrot.jpg"/>
+		      <div id="drone-status" title="Drone Status"
+				data-bind="ojComponent: {
+				  component: 'ojStatusMeterGauge', 
+				  min: 0, 
+				  max: 100, 
+				  value: droneStatus,  
+				  orientation: 'vertical',
+				  color: 'green',
+				  indicatorSize : 0.5,
+			 	  animationOnDisplay: 'auto',
+			 	  animationOnDataChange : 'auto',
+				  plotArea: {rendered: 'off'						
+					},
+				  readOnly: true,
+				  metricLabel: {
+				    	rendered: 'on',
+					scaling: 'none',
+					position: 'withTitle', 
+					converter: droneStatusConverter,
+					style:'font-weight:bold;font-size:14pt'}
+				 }" 
+				 style="margin-top:5px;
+				  margin-bottom:5px;
+				  margin-right:5px;
+				  margin-left:60px;
+				  width:120px;
+				  height:240px;">
+			</div>
+		</div>
+	  </div>
+	  <h3 style="font-weight: bold">Analytics</h3>
+	  <div id="charts" class="oj-flex oj-sm-justify-content-center">
+		    <div id="avg-speed-per-lap-chart" data-bind="ojComponent: {
+			component: 'ojChart', 
+			type: 'line',
+			title: {
+				text: 'Average speed'
+			},
+			series: avgspeedlineSeriesValue, 
+			groups: avgspeedlineGroupsValue, 
+			animationOnDisplay: 'auto',
+			animationOnDataChange: 'auto',
+			orientation: avgspeedorientationValue,
+			hoverBehavior: 'dim'
+			}"
+			 style="max-width:700px;width:100%;height:250px;" class="oj-flex-item chart">
+		    </div>
+ 		    <div id="laptime-per-lap-chart" data-bind="ojComponent: {
+			component: 'ojChart', 
+			type: 'line',
+			title: {
+				text: 'Lap time'
+			},
+			series: laptimelineSeriesValue, 
+			groups: laptimelineGroupsValue, 
+			animationOnDisplay: 'auto',
+			animationOnDataChange: 'auto',
+			orientation: laptimeorientationValue,
+			hoverBehavior: 'dim'
+			}"
+			 style="max-width:700px;width:100%;height:250px;" class="oj-flex-item chart">
+		    </div>
+		    <div id="offtrack-chart" data-bind="ojComponent: {
+			    component: 'ojChart', 
+			    type: 'bar',
+			    title: {
+				text: 'Off tracks'
+				}, 
+			    orientation: offtrackorientationValue,
+			    stack: offtrackstackValue,
+			    series: offtracklineSeriesValue, 
+			    groups: offtracklineGroupsValue, 
+			    animationOnDisplay: 'auto',
+			    animationOnDataChange: 'auto',
+			    hoverBehavior: 'dim',
+			    yAxis: {minStep: 1}
+			}"
+			 style="max-width:700px;width:100%;height:250px;" class="oj-flex-item chart">
+		    </div>
+		    <div id="fastestlap-chart" data-bind="ojComponent: {
+			    component: 'ojChart', 
+			    type: 'bar',
+			    title: {
+				text: 'Fastest lap'
+				}, 
+			    orientation: fastestlaporientationValue,
+			    stack: fastestlapstackValue,
+			    series: fastestlaplineSeriesValue, 
+			    groups: fastestlaplineGroupsValue, 
+			    animationOnDisplay: 'auto',
+			    animationOnDataChange: 'auto',
+			    hoverBehavior: 'dim'
+			}"
+			 style="max-width:700px;width:100%;height:250px;" class="oj-flex-item chart">
+		    </div>
+	  </div>
+      </div>
+      <footer id="footer" class="oj-web-applayout-footer" role="contentinfo">
+        <div class="oj-web-applayout-footer-item oj-web-applayout-max-width">
+          <ul>
+            <!-- ko foreach: footerLinks -->
+            <li><a data-bind="text : name, attr : {id: linkId, href : linkTarget}"></a></li>
+            <!-- /ko -->
+          </ul>
+        </div>
+        <div class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-secondary-color oj-text-sm">
+          Copyright © 2014, 2017 Oracle and/or its affiliates All rights reserved.
+        </div>
+      </footer>
+</div>

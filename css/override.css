@@ -1,0 +1,10 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+.speed-gauge, .chart{
+  background-color: white;
+}
