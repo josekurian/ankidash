@@ -19,9 +19,9 @@ function socketioController() {
 
       self.menuItemSelect = function( event, ui ) {
         var item = ui.item.attr('id');
-	if (item === "iot") window.open('https://iot-gse00003040.iot.us.oraclecloud.com/ui');
-	if (item === "bi") window.open('https://bi-gse00003040.analytics.us2.oraclecloud.com/analytics/saw.dll?Portal&PortalPath=%2Fcompany_shared%2FCar%20Racing%2F_portal%2FCar%20Racing');
-	if (item === "pcs") window.open('https://process-gse00003040.process.us2.oraclecloud.com/bpm/workspace');
+	if (item === "iot") window.open('https://129.150.71.46/ui');
+	if (item === "bi") window.open('https://bi-gse00011668.analytics.us2.oraclecloud.com/analytics');
+	if (item === "pcs") window.open('https://process-gse00011668.process.us2.oraclecloud.com/bpm/workspace/faces/worklist.jspx');
     };
 
       // Footer
@@ -272,7 +272,7 @@ function socketioController() {
 
 	self.initSocket = function(port) {
 	var path = '/socket.io';
-	var uri = "http://" + process.env.EVENTSERVER + ":" + port;
+	var uri = "http://new.proxy.digitalpracticespain.com:" + port;
 	if (socket) {
 		socket.disconnect();
 		socket.close();
