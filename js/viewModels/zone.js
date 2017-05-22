@@ -7,7 +7,7 @@
  */
 define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/dashboard', 'ojs/ojselectcombobox'],
  function(oj, ko, $, dash) {
-  
+
     function ZoneViewModel() {
       var self = this;
       self.startButtonClick = function(data, event){
@@ -21,19 +21,19 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/dashboard', 'ojs/ojselec
    		$.ajax(
     	            {
     	               type: "GET",
-    	               url:  "http://129.152.131.103:9997/apex/pdb1/anki/demozone/zone/",
+    	               url:  "http://" + process.env.EVENTSERVER + ":9997/ords/pdb1/anki/demozone/zone/",
                        crossDomain : true,
 		       dataType : "json",
     	               success: function (data) {
 			var list = [];
-			
+
 			data.items.forEach(function(z) {
 				if (z.active === 'Y') list[list.length] = {value: (z.proxyport - 7700 + 10000), label: z.id };
 
 			});
-    	            	
+
     	               self.zoneList(list);
-		       if (list.length>0) self.zone([list[0].value]);		
+		       if (list.length>0) self.zone([list[0].value]);
     	               },
     	               error: function (msg, url, line) {
 

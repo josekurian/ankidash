@@ -2,9 +2,9 @@ define(['ojs/ojcore', 'knockout', 'socketio'],
   function(oj, ko, io) {
 
 
-  
+
 function socketioController() {
-     
+
      var self = this;
 
      // Media queries for repsonsive layouts
@@ -23,7 +23,7 @@ function socketioController() {
 	if (item === "bi") window.open('https://bi-gse00003040.analytics.us2.oraclecloud.com/analytics/saw.dll?Portal&PortalPath=%2Fcompany_shared%2FCar%20Racing%2F_portal%2FCar%20Racing');
 	if (item === "pcs") window.open('https://process-gse00003040.process.us2.oraclecloud.com/bpm/workspace');
     };
-      
+
       // Footer
       function footerLink(name, id, linkTarget) {
         this.name = name;
@@ -104,8 +104,8 @@ function socketioController() {
 /* Speed feed */
 
 	self.skullSpeed = ko.observable(0);
-	self.groundshockSpeed = ko.observable(0);    
-	self.guardianSpeed = ko.observable(0);    
+	self.groundshockSpeed = ko.observable(0);
+	self.guardianSpeed = ko.observable(0);
 	self.thermoSpeed = ko.observable(0);
 
 	self.speed = [];
@@ -134,7 +134,7 @@ function socketioController() {
 		          {name : "Ground Shock", items : []},
 		          {name : "Guardian", items : []},
 		          {name : "Thermo", items : []}];
-       
+
         self.avgspeedlineSeriesValue = ko.observableArray(avgspeedlineSeriesDefaultValue);
         self.avgspeedlineGroupsValue = ko.observableArray([]);
 	self.avgspeedorientationValue = ko.observable('vertical');
@@ -163,7 +163,7 @@ function socketioController() {
 
 /* Lap time feed */
 
-        
+
         self.laptimelineSeriesValue = ko.observableArray([{name : "Skull", items : []},
 		          {name : "Ground Shock", items : []},
 		          {name : "Guardian", items : []},
@@ -197,7 +197,7 @@ function socketioController() {
 
 
 /* Off tracks feed */
-   
+
         var offtracklineSeriesDefaultValue = [{name : "Skull", items : []},
                           {name : "Ground Shock", items : []},
                           {name : "Guardian", items : []},
@@ -229,8 +229,8 @@ function socketioController() {
 
 
 /* Fastest lap feed */
-   
-        
+
+
         self.fastestlaplineSeriesValue = ko.observableArray( [{name : "Skull", items : []},
                           {name : "Ground Shock", items : []},
                           {name : "Guardian", items : []},
@@ -248,7 +248,7 @@ function socketioController() {
 				l.items[0] = laptimeSec;
 				self.fastestlaplineSeriesValue(series);
 				}
-			}			
+			}
 		}
 
 	function resetFastestlap() {
@@ -272,7 +272,7 @@ function socketioController() {
 
 	self.initSocket = function(port) {
 	var path = '/socket.io';
-	var uri = "http://129.152.131.103:" + port;
+	var uri = "http://" + process.env.EVENTSERVER + ":" + port;
 	if (socket) {
 		socket.disconnect();
 		socket.close();
