@@ -273,6 +273,9 @@ function socketioController() {
 	self.initSocket = function(port) {
 	var path = '/socket.io';
 	var uri = "http://new.proxy.digitalpracticespain.com:" + port;
+
+  console.log("Start listening on: " + uri);
+
 	if (socket) {
 		socket.disconnect();
 		socket.close();
