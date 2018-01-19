@@ -291,6 +291,9 @@ function socketioController() {
 			}
 	);
 	socket.on('race', function(msg, callback) {
+
+      console.log("[EVENT] RACE received");
+
 			msg.forEach(function(element) {
 				  resetAll();
 				  updateRaceid(element.payload.data.raceId, element.payload.data.data_demozone, element.payload.data.raceStatus);
