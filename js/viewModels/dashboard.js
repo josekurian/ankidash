@@ -291,9 +291,6 @@ function socketioController() {
 			}
 	);
 	socket.on('race', function(msg, callback) {
-
-      console.log("[EVENT] RACE received: " + JSON.stringify(msg));
-
 			msg.forEach(function(element) {
 				  resetAll();
 				  updateRaceid(element.payload.data.raceId, element.payload.data.data_demozone, element.payload.data.raceStatus);
@@ -311,15 +308,8 @@ function socketioController() {
 	);
 
 	socket.on('speed', function(msg, callback) {
-
-//    console.log("[SPEED] RACE received: " + JSON.stringify(msg));
-        console.log("[SPEED] RACE received (racing: %s)", racing);
-
 				if (!racing) return;
 				msg.forEach(function(element) {
-
-            console.log("Data: car: %s, speed: %d", element.payload.data.data_carname, element.payload.data.data_speed);
-
 					  updateSpeed(element.payload.data.data_carname, element.payload.data.data_speed);
 					  updateAverageSpeed(element.payload.data.data_carname, element.payload.data.data_speed, element.payload.data.data_lap);
 					});
