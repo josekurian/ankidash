@@ -313,7 +313,7 @@ function socketioController() {
 	socket.on('speed', function(msg, callback) {
 
 //    console.log("[SPEED] RACE received: " + JSON.stringify(msg));
-        console.log("[SPEED] RACE received");
+        console.log("[SPEED] RACE received (racing: %s)", racing);
 
 				if (!racing) return;
 				msg.forEach(function(element) {
