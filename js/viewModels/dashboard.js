@@ -292,7 +292,7 @@ function socketioController() {
 	);
 	socket.on('race', function(msg, callback) {
 
-      console.log("[EVENT] RACE received");
+      console.log("[EVENT] RACE received: " + JSON.stringify(msg));
 
 			msg.forEach(function(element) {
 				  resetAll();
@@ -311,6 +311,9 @@ function socketioController() {
 	);
 
 	socket.on('speed', function(msg, callback) {
+
+        console.log("[SPEED] RACE received: " + JSON.stringify(msg));
+
 				if (!racing) return;
 				msg.forEach(function(element) {
 					  updateSpeed(element.payload.data.data_carname, element.payload.data.data_speed);
