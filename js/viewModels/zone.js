@@ -21,7 +21,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'viewModels/dashboard', 'ojs/ojselec
    		$.ajax(
     	            {
     	               type: "GET",
-    	               url:  "http://new.proxy.digitalpracticespain.com:9997/ords/pdb1/anki/demozone/zone/",
+    	               url:  "http://infra.wedoteam.io:9997/ords/pdb1/anki/demozone/zone/",
                        crossDomain : true,
 		       dataType : "json",
     	               success: function (data) {

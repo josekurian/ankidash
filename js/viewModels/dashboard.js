@@ -272,7 +272,7 @@ function socketioController() {
 
 	self.initSocket = function(port) {
 	var path = '/socket.io';
-	var uri = "http://new.proxy.digitalpracticespain.com:" + port;
+	var uri = "http://infra.wedoteam.io:" + port;
 
   console.log("Start listening on: " + uri);
 
