@@ -60,7 +60,7 @@ function socketioController() {
 
 	self.raceId = ko.observable("Race ?");
 
-	var racing = true;
+	var racing = false;
 
 	function updateRaceid(id, zone, status) {
 		if (id===null) self.raceId("Race ?");
@@ -308,7 +308,6 @@ function socketioController() {
 	);
 
 	socket.on('speed', function(msg, callback) {
-		console.log(msg);
 				if (!racing) return;
 				msg.forEach(function(element) {
 					  updateSpeed(element.payload.data.data_carname, element.payload.data.data_speed);
