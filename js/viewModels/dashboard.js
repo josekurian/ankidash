@@ -60,7 +60,7 @@ function socketioController() {
 
 	self.raceId = ko.observable("Race ?");
 
-	var racing = false;
+	var racing = true;
 
 	function updateRaceid(id, zone, status) {
 		if (id===null) self.raceId("Race ?");
